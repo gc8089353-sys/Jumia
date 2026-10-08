@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Jumia Careers | Apply & Pay</title>
+  <!-- Font Awesome 5 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    /* main card – jumia style clean white with subtle shadow */
+    .career-card {
+      max-width: 1100px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15), 0 8px 24px -6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    /* header / jumia branding */
+    .card-header {
+      padding: 1.8rem 2.2rem 0.8rem 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eef0f4;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-icon {
+      background: #f68b1e; /* jumia orange */
+      color: white;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      box-shadow: 0 6px 12px -4px rgba(246, 139, 30, 0.3);
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1e2a3a;
+    }
+
+    .logo-text span {
+      color: #f68b1e;
+      font-weight: 800;
+    }
+
+    .badge {
+      background: #fef2e6;
+      color: #b85e00;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #ffe2c1;
+    }
+
+    .badge i {
+      font-size: 0.9rem;
+    }
+
+    /* main content grid */
+    .card-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 1.8rem;
+      padding: 2rem 2.2rem 2.2rem 2.2rem;
+    }
+
+    /* left side - job description */
+    .job-details h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1e2a3a;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .job-details h2 i {
+      color: #f68b1e;
+      font-size: 1.5rem;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+      margin: 1.2rem 0 1.5rem 0;
+      background: #f9fafc;
+      padding: 1rem 1.4rem;
+      border-radius: 18px;
+      border: 1px solid #eef0f4;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: #3a4b5e;
+    }
+
+    .meta-item i {
+      color: #f68b1e;
+      width: 18px;
+      font-size: 1rem;
+    }
+
+    .job-desc p {
+      color: #2f3e4e;
+      line-height: 1.6;
+      font-size: 0.98rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .job-desc ul {
+      list-style: none;
+      margin: 1rem 0 1.6rem 0;
+    }
+
+    .job-desc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 0.8rem;
+      color: #2f3e4e;
+      font-size: 0.96rem;
+    }
+
+    .job-desc li i {
+      color: #f68b1e;
+      font-size: 1rem;
+      margin-top: 3px;
+      min-width: 18px;
+    }
+
+    .highlight-tag {
+      background: #fef2e6;
+      color: #b85e00;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ffe2c1;
+    }
+
+    /* right side - payment & apply form */
+    .apply-card {
+      background: #f9fafc;
+      border-radius: 26px;
+      padding: 1.8rem 1.8rem 2rem 1.8rem;
+      border: 1px solid #eef0f4;
+      height: fit-content;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .apply-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e2a3a;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .apply-card h3 i {
+      color: #f68b1e;
+    }
+
+    .apply-sub {
+      color: #6f7d8c;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px dashed #d9e0e8;
+      padding-bottom: 0.8rem;
+    }
+
+    .fee-box {
+      background: white;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      border: 1px solid #eef0f4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .fee-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: #1e2a3a;
+    }
+
+    .fee-label i {
+      color: #f68b1e;
+      font-size: 1.2rem;
+    }
+
+    .fee-amount {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1e2a3a;
+      letter-spacing: -0.02em;
+    }
+
+    .fee-amount small {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #6f7d8c;
+    }
+
+    .payment-methods {
+      margin: 1.2rem 0 0.8rem 0;
+    }
+
+    .payment-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3a4b5e;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .method-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 1.6rem;
+    }
+
+    .method-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.7rem 1rem;
+      background: white;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .method-option:hover {
+      border-color: #f68b1e;
+      background: #fffaf5;
+    }
+
+    .method-option.selected {
+      border-color: #f68b1e;
+      background: #fff5ea;
+      box-shadow: 0 0 0 1px #f68b1e;
+    }
+
+    .method-option input[type="radio"] {
+      accent-color: #f68b1e;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
+
+    .method-option label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1e2a3a;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .method-option label i {
+      font-size: 1.2rem;
+      color: #f68b1e;
+      width: 22px;
+    }
+
+    .btn-pay-apply {
+      width: 100%;
+      background: #f68b1e;
+      border: none;
+      border-radius: 60px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 18px -8px rgba(246, 139, 30, 0.4);
+      border: 1px solid #e07d12;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-pay-apply:hover {
+      background: #e07d12;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 24px -8px rgba(246, 139, 30, 0.5);
+    }
+
+    .btn-pay-apply:active {
+      transform: translateY(1px);
+      box-shadow: 0 6px 10px -6px rgba(246, 139, 30, 0.5);
+    }
+
+    .secure-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #7a8a99;
+    }
+
+    .secure-note i {
+      color: #1e2a3a;
+      font-size: 0.8rem;
+    }
+
+    /* footer */
+    .card-footer {
+      background: #ffffff;
+      padding: 1rem 2.2rem 1.5rem 2.2rem;
+      border-top: 1px solid #eef0f4;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      color: #7a8a99;
+      font-size: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: #5d6e80;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #f68b1e;
+    }
+
+    /* modal (payment simulation) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+
+    .modal-overlay.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-box {
+      background: white;
+      max-width: 420px;
+      width: 90%;
+      border-radius: 28px;
+      padding: 2rem 2rem 1.8rem 2rem;
+      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      transform: scale(0.92);
+      transition: transform 0.25s;
+    }
+
+    .modal-overlay.show .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-box i {
+      font-size: 3.2rem;
+      color: #f68b1e;
+      background: #fff4e8;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40px;
+      margin: 0 auto 1.2rem auto;
+    }
+
+    .modal-box h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e2a3a;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-box p {
+      color: #5d6e80;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .modal-box button {
+      background: #1e2a3a;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    .modal-box button:hover {
+      background: #0f1a26;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .card-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.6rem 1.6rem 1.8rem 1.6rem;
+      }
+
+      .card-header {
+        padding: 1.4rem 1.6rem 0.8rem 1.6rem;
+      }
+
+      .card-footer {
+        padding: 1rem 1.6rem 1.4rem 1.6rem;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 0.8rem;
+      }
+
+      .career-card {
+        border-radius: 24px;
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+
+      .logo-text {
+        font-size: 1.4rem;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.5rem;
+      }
+
+      .job-details h2 {
+        font-size: 1.3rem;
+      }
+
+      .job-meta {
+        gap: 0.8rem 1.2rem;
+        padding: 0.8rem 1rem;
+      }
+
+      .apply-card {
+        padding: 1.4rem 1.2rem 1.6rem 1.2rem;
+      }
+
+      .fee-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .btn-pay-apply {
+        font-size: 0.95rem;
+        padding: 0.9rem 1rem;
+      }
+
+      .modal-box {
+        padding: 1.6rem 1.2rem 1.4rem 1.2rem;
+      }
+    }
+
+    /* micro interaction */
+    .method-option {
+      user-select: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="career-card">
+    <!-- HEADER -->
+    <div class="card-header">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+        <div class="logo-text">
+          Jumia<span>Careers</span>
+        </div>
+      </div>
+      <div class="badge">
+        <i class="fas fa-bolt"></i> Urgent hiring
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="card-content">
+      <!-- LEFT: JOB INFO -->
+      <div class="job-details">
+        <div class="highlight-tag">
+          <i class="fas fa-star" style="font-size: 0.7rem;"></i> Premium opportunity
+        </div>
+        <h2>
+          <i class="fas fa-truck"></i> Logistics Coordinator
+          <span style="font-size: 0.9rem; font-weight: 400; color: #6f7d8c; margin-left: 6px;">(Full‑time)</span>
+        </h2>
+
+        <div class="job-meta">
+          <div class="meta-item"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</div>
+          <div class="meta-item"><i class="fas fa-clock"></i> 40 hrs/week</div>
+          <div class="meta-item"><i class="fas fa-calendar-alt"></i> Start immediately</div>
+        </div>
+
+        <div class="job-desc">
+          <p>
+            Jumia is seeking a detail-oriented <strong>Logistics Coordinator</strong> to manage 
+            delivery operations, optimize routes, and ensure timely shipment across our network. 
+            You’ll work with a dynamic team and grow with Africa’s leading e‑commerce platform.
+          </p>
+
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Coordinate daily deliveries and track shipments</li>
+            <li><i class="fas fa-check-circle"></i> Liaise with vendors and delivery partners</li>
+            <li><i class="fas fa-check-circle"></i> Resolve logistics issues in real‑time</li>
+            <li><i class="fas fa-check-circle"></i> Maintain accurate records and reports</li>
+          </ul>
+
+          <p style="font-size: 0.9rem; color: #4f5f6f;">
+            <i class="fas fa-graduation-cap" style="color: #f68b1e; margin-right: 6px;"></i>
+            Bachelor's degree or equivalent experience preferred.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: APPLY + PAYMENT -->
+      <div class="apply-card">
+        <h3><i class="fas fa-file-signature"></i> Apply now</h3>
+        <div class="apply-sub">A one‑time application fee is required</div>
+
+        <!-- fee summary -->
+        <div class="fee-box">
+          <div class="fee-label">
+            <i class="fas fa-receipt"></i> Application fee
+          </div>
+          <div class="fee-amount">
+            ₦2,500 <small>NGN</small>
+          </div>
+        </div>
+
+        <!-- payment methods -->
+        <div class="payment-methods">
+          <div class="payment-title">Select payment method</div>
+          <div class="method-options" id="methodOptions">
+            <div class="method-option selected" data-method="card">
+              <input type="radio" name="payment" id="card" checked>
+              <label for="card"><i class="fas fa-credit-card"></i> Debit/Credit Card</label>
+            </div>
+            <div class="method-option" data-method="transfer">
+              <input type="radio" name="payment" id="transfer">
+              <label for="transfer"><i class="fas fa-university"></i> Bank Transfer</label>
+            </div>
+            <div class="method-option" data-method="ussd">
+              <input type="radio" name="payment" id="ussd">
+              <label for="ussd"><i class="fas fa-mobile-alt"></i> USSD</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- main CTA -->
+        <button class="btn-pay-apply" id="payApplyBtn">
+          <i class="fas fa-lock"></i> Pay ₦2,500 & Apply
+        </button>
+
+        <div class="secure-note">
+          <i class="fas fa-shield-alt"></i> Secure payment · 256‑bit SSL
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="card-footer">
+      <div>© 2025 Jumia Careers – All roles are paid opportunities.</div>
+      <div class="footer-links">
+        <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+        <a href="#"><i class="fas fa-file-contract"></i> Terms</a>
+        <a href="#"><i class="fas fa-user-shield"></i> Privacy</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL (payment simulation) -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-box">
+      <i class="fas fa-check-circle"></i>
+      <h4>Payment successful</h4>
+      <p>Your application fee of ₦2,500 has been received.<br>You can now complete your job application.</p>
+      <button id="modalCloseBtn">Continue to application</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---- Payment method selection (visual + radio sync) ----
+      const methodOptions = document.querySelectorAll('.method-option');
+
+      methodOptions.forEach(option => {
+        const radio = option.querySelector('input[type="radio"]');
+
+        // click on the whole option
+        option.addEventListener('click', (e) => {
+          // if the click is directly on the radio, let it handle naturally
+          if (e.target.type === 'radio') {
+            // still need to update UI
+            updateSelectedOption(option);
+            return;
+          }
+          // otherwise, manually check the radio
+          radio.checked = true;
+          updateSelectedOption(option);
+        });
+
+        // radio change event (if user clicks directly on radio)
+        radio.addEventListener('change', () => {
+          if (radio.checked) {
+            updateSelectedOption(option);
+          }
+        });
+      });
+
+      function updateSelectedOption(activeOption) {
+        methodOptions.forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        activeOption.classList.add('selected');
+        // ensure the radio inside is checked
+        const radio = activeOption.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+      }
+
+      // ---- Pay & Apply button ----
+      const payBtn = document.getElementById('payApplyBtn');
+      const modal = document.getElementById('paymentModal');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+      // show modal on pay button click
+      payBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // get selected method (for demonstration, we could use it)
+        const selectedMethod = document.querySelector('input[name="payment"]:checked');
+        const methodId = selectedMethod ? selectedMethod.id : 'card';
+
+        // (Simulate payment processing – but directly show success modal)
+        // In a real flow you'd redirect or process payment.
+        // Here we just show the modal.
+        modal.classList.add('show');
+
+        // OPTIONAL: you could add method-specific message
+        // but we keep it simple
+      });
+
+      // close modal
+      modalCloseBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+        // After closing, you could redirect to application form
+        // For demo, we just log
+        console.log('User proceeded to application after payment.');
+        // You can uncomment the line below to simulate moving to the next step
+        // alert('Redirecting to application form...');
+      });
+
+      // close modal if clicking outside the modal-box
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('show');
+        }
+      });
+
+      // ---- Make sure the initial selected class matches the checked radio ----
+      // by default, card is checked, but we ensure selected class is on the right parent
+      const defaultChecked = document.querySelector('input[name="payment"]:checked');
+      if (defaultChecked) {
+        const parentOption = defaultChecked.closest('.method-option');
+        if (parentOption) {
+          methodOptions.forEach(opt => opt.classList.remove('selected'));
+          parentOption.classList.add('selected');
+        }
+      }
+
+      // ---- small UX: prevent double-click on pay button from opening multiple? not needed
+      // but we also want to close modal with ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.con
